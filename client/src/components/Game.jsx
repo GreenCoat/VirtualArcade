@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 export default class Game extends PureComponent {
   render () {
-    const { _id, i, name, description, picture, toggleModal, deleteGame } = this.props;
+    const { _id, i, name, description, picture, toggleModal} = this.props;
     return (
       <div className="col-md-4">
         <div className="thumbnail">
@@ -15,7 +15,7 @@ export default class Game extends PureComponent {
             <p className="description-thumbnail">{`${description.substring(0, 150)}...`}</p>
             <div className="btn-group" role="group" aria-label="...">
               <button className="btn btn-success" role="button" onClick={() => toggleModal(i)}>View</button>
-              <button className="btn btn-danger" role="button" onClick={() => deleteGame(_id)}>Delete</button>
+                {/*<button className="btn btn-danger" role="button" onClick={() => deleteGame(_id)}>Delete</button> */}
             </div>
           </div>
         </div>

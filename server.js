@@ -54,9 +54,9 @@ app.route('/games')
   .get(getGames);
 app.route('/games/:id')
   // get a single game
-  .get(getGame)
+  .get(getGame);
   // delete a single game
-  .delete(deleteGame);
+//  .delete(deleteGame);
 
 // ...For all the other requests just sends back the Homepage
 app.route("*").get((req, res) => {

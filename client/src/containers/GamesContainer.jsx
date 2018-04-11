@@ -63,7 +63,7 @@ export default class GamesContainer extends Component {
           searchBar={searchBar}
           setSearchBar={this.setSearchBar}
           toggleModal={this.toggleModal}
-          deleteGame={this.deleteGame}
+         // deleteGame={this.deleteGame}
         />
       </div>
     );

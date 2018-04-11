@@ -38,18 +38,18 @@ const postGame = (req, res) => {
 };
 
 // Delete a game by the given ID
-const deleteGame = (req, res) => {
-// We remove the game by the given id and send a message back if no errors
-  Game.remove(
-    { _id: req.params.id },
-    err => {
-      if (err) {
-        res.send(err);
-      }
-      res.json({ message: 'successfully deleted' }); // A simple JSON answer to inform the client
-    }
-  );
-};
+//const deleteGame = (req, res) => {
+//// We remove the game by the given id and send a message back if no errors
+//  Game.remove(
+//    { _id: req.params.id },
+//    err => {
+//      if (err) {
+//        res.send(err);
+//      }
+//      res.json({ message: 'successfully deleted' }); // A simple JSON answer to inform the client
+//    }
+//  );
+//};
 
 // We export our functions to be used in the server routes
-export { getGames, getGame, postGame, deleteGame };
+export { getGames, getGame, postGame};
