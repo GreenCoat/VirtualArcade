@@ -57,7 +57,9 @@ app.route('/games/:id')
   .get(getGame);
   // delete a single game
 //  .delete(deleteGame);
-
+app.route('/games/play/:id')
+  // play single game by ID
+  .get(getGame);
 // ...For all the other requests just sends back the Homepage
 app.route("*").get((req, res) => {
   res.sendFile('client/dist/index.html', { root: __dirname });

@@ -33,6 +33,16 @@ export default class GamesContainer extends Component {
     .then(data => this.setState({ games: data }));
   }
 
+      playGame (id) {
+    fetch(`http://localhost:8080/games/play/${id}`, {
+      headers: new Headers({
+        'Content-Type': 'application/json'
+      })
+    })
+    .then(response => response.json()) // The json response to object literal
+    .then(data => this.setState({ games: data }));
+  }
+
   deleteGame (id) {
     fetch(`http://localhost:8080/games/${id}`, {
       headers: new Headers({
@@ -64,6 +74,7 @@ export default class GamesContainer extends Component {
           setSearchBar={this.setSearchBar}
           toggleModal={this.toggleModal}
          // deleteGame={this.deleteGame}
+         playGame={this.playGame}
         />
       </div>
     );

@@ -26,7 +26,7 @@ export default class GamesListManager extends PureComponent {
                   key={game._id}
                   i={i}
                   toggleModal={toggleModal}
-                 // deleteGame={deleteGame}
+                 /* playGame={playGame} */
                 />
               );
             })

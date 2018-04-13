@@ -17,7 +17,7 @@ export default class Home extends PureComponent {
               <div className="masthead clearfix">
                 <div className="inner">
                   <nav>
-                    <img className="header-logo" src="https://cdn.filestackcontent.com/nLnmrZQaRpeythR4ezUo"/>
+                    <img className="header-logo" src="https://cdn.filestackcontent.com/RHXucTfJTbmjsVbS6Nhq"/>
           
                      <ul className="nav masthead-nav">
                       <li className={this.active('/')}><Link to="/">Home</Link></li>
