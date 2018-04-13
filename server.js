@@ -6,7 +6,7 @@ import morgan from 'morgan';
 
 // # Import models and routes
 import Game from './app/models/game';
-import { getGames, getGame, postGame, deleteGame } from './app/routes/game';
+import { getGames, getGame, postGame, playGame } from './app/routes/game';
 
 // # Using the express server ap and listen to the port 8080
 const app = express(); 
@@ -59,7 +59,7 @@ app.route('/games/:id')
 //  .delete(deleteGame);
 app.route('/games/play/:id')
   // play single game by ID
-  .get(getGame);
+  .get(playGame);
 // ...For all the other requests just sends back the Homepage
 app.route("*").get((req, res) => {
   res.sendFile('client/dist/index.html', { root: __dirname });

@@ -7,7 +7,7 @@ import Home from './Home';
 import Archive from './Archive';
 import Modal from './Modal';
 import Welcome from './Welcome';
-
+import displayGame from './displayGame';
 // We export all the components at once
 export {
   About,
@@ -18,5 +18,6 @@ export {
   Home,
   Archive,
   Modal,
-  Welcome
+  Welcome,
+  displayGame
 };

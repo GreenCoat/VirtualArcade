@@ -4,7 +4,7 @@ import Game from './Game';
 
 export default class GamesListManager extends PureComponent {
   render () {
-    const { games, searchBar, setSearchBar, toggleModal } = this.props;
+    const { games, searchBar, setSearchBar, toggleModal, playGame } = this.props;
     return (
 
       <div className="container scrollable">
@@ -26,7 +26,7 @@ export default class GamesListManager extends PureComponent {
                   key={game._id}
                   i={i}
                   toggleModal={toggleModal}
-                 /* playGame={playGame} */
+                 playGame={playGame} 
                 />
               );
             })

@@ -10,6 +10,7 @@ export default class GamesContainer extends Component {
     this.toggleModal = this.toggleModal.bind(this);
     this.deleteGame = this.deleteGame.bind(this);
     this.setSearchBar = this.setSearchBar.bind(this);
+    this.playGame = this.playGame.bind(this);
   }
 
   // Once the component mounted it fetches the data from the server
@@ -33,17 +34,15 @@ export default class GamesContainer extends Component {
     .then(data => this.setState({ games: data }));
   }
 
-      playGame (id) {
-    fetch(`http://localhost:8080/games/play/${id}`, {
-      headers: new Headers({
-        'Content-Type': 'application/json'
-      })
-    })
-    .then(response => response.json()) // The json response to object literal
-    .then(data => this.setState({ games: data }));
+    playGame (index) {
+    console.log("working")
+    this.setState({ selectedGame: this.state.games[0] });
+    // Since we included bootstrap we can show our modal through its syntax
+    $('#game-modal').modal();
   }
 
   deleteGame (id) {
+      console.log("foo")
     fetch(`http://localhost:8080/games/${id}`, {
       headers: new Headers({
         'Content-Type': 'application/json',

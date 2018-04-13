@@ -24,6 +24,17 @@ const getGame = (req, res) => {
     });
 }
 
+const playGame = (req, res) => {
+    const { id } = req.params;
+    // Query the db for a single game, if no errors send it to the client
+    Game.findById(id, (err, game) => {
+        if (err) {
+            res.send(err);
+        }
+        res.json(game); // Game sent as json
+    });
+}
+
 // Get the body data and create a new Game
 const postGame = (req, res) => {
   // We assign the game info to a empty game and send a message back if no errors
@@ -52,4 +63,4 @@ const postGame = (req, res) => {
 //};
 
 // We export our functions to be used in the server routes
-export { getGames, getGame, postGame};
+export { getGames, getGame, postGame, playGame};
