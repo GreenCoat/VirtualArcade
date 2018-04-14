@@ -23,6 +23,7 @@ mongoose.Promise = Promise;
 
 mongoose.connect("mongodb://localhost/gamearcade_db", options);
 
+
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 

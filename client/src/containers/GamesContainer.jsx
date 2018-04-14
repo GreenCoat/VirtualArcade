@@ -34,11 +34,11 @@ export default class GamesContainer extends Component {
     .then(data => this.setState({ games: data }));
   }
 
-    playGame (index) {
+  playGame (index) {
     console.log("working")
     this.setState({ selectedGame: this.state.games[0] });
     // Since we included bootstrap we can show our modal through its syntax
-    $('#game-modal').modal();
+      $('#game-modal').modal();
   }
 
   deleteGame (id) {
