@@ -1,0 +1,56 @@
+input {
+	font-family: 'VT323', monospace;
+	font-size: 24px;
+	color: lime;
+	margin: 5px;
+	border-bottom: 1px solid lime; 
+	border-top: none;
+	border-left: none;
+	border-right: none; 
+	background: black; 
+	outline: none
+}
+
+input::before {
+	content: ">";
+	font-family: 'VT323', monospace;
+	font-size: 24px;
+	color: lime;
+}
+
+button {
+	font-family: 'VT323', monospace;
+	font-size: 30px;
+	color: lime;
+	background: black;
+	border: none;
+	margin: 5px 0px;
+}
+
+button:focus {
+	color: red;
+	border: none;
+}
+
+#hangman {
+	width: 400px; 
+	height: 400px;
+	margin: auto; 
+	background: black; 
+	color: lime; 
+	font-family: 'VT323', monospace;
+	text-align: center;
+}
+
+#display {
+	border: 2px solid lime; 
+	width: 90%; 
+	height: 90%;
+	margin: auto;
+}
+
+.separator {
+	border: 1px solid lime; 
+	width: 80%;
+	margin: auto;
+}
