@@ -2,9 +2,9 @@
 import ReactDOM from 'react-dom';
 import React, { PureComponent } from 'react';
 import { Link } from 'react-router';
-//import './ttt.css';
+import './ttt.css';
 
-const ttt = props => (
+const TTT = props => (
 <div className="game">
         <div className="game-board">
           <Board />
@@ -118,5 +118,5 @@ function calculateWinner(squares) {
     return null;
 }
 
-export default ttt;
+export default TTT;
 

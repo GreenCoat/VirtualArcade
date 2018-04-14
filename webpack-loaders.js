@@ -25,7 +25,7 @@ exports.devServer = function(options) {
 exports.css = {
   test: /\.css$/,
   use: ['style-loader', 'css-loader'],
-  include: PATHS.css
+  include: [PATHS.css, PATHS.games]
 }
 
 exports.font = {
