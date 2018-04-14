@@ -1,16 +1,17 @@
 import React, { PureComponent } from 'react';
-import { Link } from 'react-router';
-import ttt from "./ttt"
+//Add game to this list to use
+import { Hangman, TTT } from '../games'
 
-export default class displayGame extends PureComponent {
+export default class DisplayGame extends PureComponent {
   render () {
-      if (!this.state.game){
-          return null;
-      }
+    //Add game with matching url to components object to dynamically call
+  	const components = {
+  		hangman: Hangman,
+  		ttt: TTT
+  	}
+  	const Game = components[this.props.params.game];
     return (
-      <div className="" id="gameHolder">
- <ttt/>
-</div>
+      	<Game />
     );
   }
 }
