@@ -16,7 +16,6 @@ export default class GamesListManager extends PureComponent {
             type="search" placeholder="Search by Name" className="form-control search-bar" onKeyUp={setSearchBar} />
         </div>
         <div className="row">
-          <Link to="games/Hangman">Play Hangman (Demo)</Link>
         {
     // A Game is only shown if its name contains the string from the searchBar
           games

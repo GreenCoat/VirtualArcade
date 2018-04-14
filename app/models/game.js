@@ -7,6 +7,7 @@ const Schema = mongoose.Schema;
 const gameSchema = new Schema(
     {
         name: String,
+        game: String,
         year: Number,
         description: String,
         picture: String,
