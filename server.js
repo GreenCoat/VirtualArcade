@@ -30,7 +30,7 @@ db.on('error', console.error.bind(console, 'connection error:'));
 // # Database creation
 
 let data = [{
-        name: "Hungman",
+        name: "Hangman",
         year: 1800,
         description: "Hangman is a simple and fun game. There is a secret word which are revealed only the first and last letters, in each round of game the player chooses a letter of the alphabet, if the letter is contained in the secret word it will appear, otherwise the player will receive a penalty and gradually a poor little man will be hanged. The aim of the game is to compose the secret word before the man is completely hung.",
         picture: "https://cdn.filestackcontent.com/BVLUoBW1SwOSwPw1ASpH",
@@ -42,19 +42,13 @@ let data = [{
         picture: "https://cdn.filestackcontent.com/2mHXAFNrSdiPlBzQLHsf", 
 }];
 
-
-
-
-// Save a new Example using the data object
-Game.create(data)
-  .then(function(dbExample) {
-    // If saved successfully, print the new Example document to the console
-    console.log(dbExample);
-  })
-  .catch(function(err) {
-    // If an error occurs, log the error message
-    console.log(err.message);
-  });
+for (let i=0; i< data.length; i++){
+    Game.findOneAndUpdate(
+    data[i], data[i], {upsert:true}, function(err, doc){
+    return "DB Added" ;
+});
+    
+}
 
 
 
