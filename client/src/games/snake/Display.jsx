@@ -28,9 +28,6 @@ class Display extends React.Component {
 		context.fillStyle='lime';
 		for	(var i=0;i<this.props.trail.length;i++){
 				context.fillRect((this.props.trail[i].x*this.gridSize)+1, (this.props.trail[i].y*this.gridSize)+1,this.gridSize-2,this.gridSize-2);
-				//if(this.props.trail[i].x==this.props.px && this.props.trail[i].y==this.props.py){
-					//console.log('ow');
-				//}
 		}
 
 		//Draws apple
