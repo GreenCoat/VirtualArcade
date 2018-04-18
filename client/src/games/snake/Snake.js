@@ -86,7 +86,7 @@ class Snake extends React.Component {
 			}
 
 			for(var i = 0; i < trail.length; i++){
-				if(trail[i].x == px && trail[i].y == px){
+				if(trail[i].x == px && trail[i].y == py){
 					this.gameOver();
 				}
 			}
@@ -124,6 +124,11 @@ class Snake extends React.Component {
 		window.addEventListener('keydown', this.changeVelocity.bind(this));
 		this.setState({gameLoop: gameLoop});
 
+	}
+
+	componentWillUnmount(){
+		window.removeEventListener('keydown', this.changeVelocity.bind(this));
+		clearInterval(this.state.gameLoop);
 	}
 
 	render(){
