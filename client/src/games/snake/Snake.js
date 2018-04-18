@@ -10,17 +10,25 @@ class Snake extends React.Component {
 			playerY: 0,
 			appleX: 15,
 			appleY: 15,
-			xVelocity: 0,
+			xVelocity: 1,
 			yVelocity: 0,
 			trail: [],
 			tailLength: 5,
-			tileCount: 20
+			tileCount: 20,
+			gameOn: false
 		}
 
 		this.changeVelocity = (evt) => {
 			evt.preventDefault();
 			let xv=this.state.xVelocity;
 			let yv=this.state.yVelocity;
+			let gameOn=this.state.gameOn;
+
+			//Start game if game is not running on any keypress
+			if(!this.state.gameOn){
+				gameOn = true;
+			}
+
 
 			switch(evt.keyCode){
 				case 37:
@@ -59,63 +67,84 @@ class Snake extends React.Component {
 
 			this.setState({
 				xVelocity: xv,
-				yVelocity: yv
+				yVelocity: yv,
+				gameOn: gameOn
 			});
 		}
 
 		this.gameLoop = () => {
-			let px = this.state.playerX+this.state.xVelocity;
-			let py = this.state.playerY+this.state.yVelocity;
-			let ax = this.state.appleX;
-			let ay = this.state.appleY;
-			let tl = this.state.tailLength;
-			let tc = this.state.tileCount;
-			let trail = this.state.trail;
+			if(this.state.gameOn){
+				let px = this.state.playerX+this.state.xVelocity;
+				let py = this.state.playerY+this.state.yVelocity;
+				let ax = this.state.appleX;
+				let ay = this.state.appleY;
+				let tl = this.state.tailLength;
+				let tc = this.state.tileCount;
+				let trail = this.state.trail;
 
-			if(px<0){
-				px=tc-1;
-			}
-			if(px>tc-1){
-				px=0;
-			}
-			if(py<0){
-				py=tc-1;
-			}
-			if(py>tc-1){
-				py=0;
-			}
+				if(px<0){
+					px=tc-1;
+				}
+				if(px>tc-1){
+					px=0;
+				}
+				if(py<0){
+					py=tc-1;
+				}
+				if(py>tc-1){
+					py=0;
+				}
 
-			for(var i = 0; i < trail.length; i++){
-				if(trail[i].x == px && trail[i].y == py){
-					this.gameOver();
+				for(var i = 0; i < trail.length; i++){
+					if(trail[i].x == px && trail[i].y == py){
+						this.gameOver();
+					}
+				}
+
+				if(px == ax && py == ay){
+					tl++;
+					ax=this.newPosition();
+					ay=this.newPosition();
+				}
+
+
+				trail.push({x: px, y: py});
+
+				while(this.state.trail.length>this.state.tailLength){
+			 		trail.shift();
+				}
+
+				if(this.state.gameOn){
+					this.setState({
+						playerX: px,
+						playerY: py,
+						appleX: ax,
+						appleY: ay,
+						trail: trail,
+						tailLength: tl
+					});
 				}
 			}
-
-			if(px == ax && py == ay){
-				tl++;
-				ax=Math.floor(Math.random()*tc);
-				ay=Math.floor(Math.random()*tc);
-			}
-
-
-			trail.push({x: px, y: py});
-
-			while(this.state.trail.length>this.state.tailLength){
-			 	trail.shift();
-			}
-
-			this.setState({
-				playerX: px,
-				playerY: py,
-				appleX: ax,
-				appleY: ay,
-				trail: trail,
-				tailLength: tl
-			});
 		}
 
 		this.gameOver = () => {
-			console.log('bummer');
+			this.setState({
+				playerX: this.newPosition(),
+				playerY: this.newPosition(),
+				appleX: this.newPosition(),
+				appleY: this.newPosition(),
+				xVelocity: 1,
+				yVelocity: 0,
+				trail: [],
+				tailLength: 5,
+				gameOn: false
+			});
+		}
+
+		this.newPosition = () => {
+			let tc = this.state.tileCount;
+
+			return Math.floor(Math.random()*tc);
 		}
 	}
 
@@ -143,6 +172,7 @@ class Snake extends React.Component {
 					xv={this.state.xVelocity}
 					xy={this.state.yVelocity}
 					trail={this.state.trail}
+					gameOn={this.state.gameOn}
 				/>
 			</div>
 		)

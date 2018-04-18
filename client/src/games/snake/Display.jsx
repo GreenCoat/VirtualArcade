@@ -24,8 +24,16 @@ class Display extends React.Component {
 		context.fillStyle='black';
 		context.fillRect(0, 0, canvas.width, canvas.height);
 
+		//Draws game start/game over message
+		if(!this.props.gameOn){
+			context.font='24px monospace';
+			context.fillStyle='white';
+			context.fillText('Press any key to start', 45, canvas.height/2);
+		}
+
 		//Draws player
 		context.fillStyle='lime';
+		context.fillRect((this.props.px*this.gridSize)+1, (this.props.py*this.gridSize)+1,this.gridSize-2,this.gridSize-2)
 		for	(var i=0;i<this.props.trail.length;i++){
 				context.fillRect((this.props.trail[i].x*this.gridSize)+1, (this.props.trail[i].y*this.gridSize)+1,this.gridSize-2,this.gridSize-2);
 		}
