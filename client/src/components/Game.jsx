@@ -17,7 +17,7 @@ export default class Game extends PureComponent {
             <p className="description-thumbnail">{`${description.substring(0, 150)}...`}</p>
             <div className="btn-group" role="group" aria-label="...">
               <button className="btn btn-success" role="button" onClick={() => toggleModal(i)}>View</button>
-                <Link to={url} className="btn btn-danger">Play Now</Link>
+             <Link to={url} className="btn btn-danger" role="button">Play Now</Link>
             </div>
           </div>
         </div>
