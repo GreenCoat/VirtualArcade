@@ -42,13 +42,12 @@ let data = [{
         year: 1952,
         description: "Tic-tac-toe (also known as noughts and crosses or Xs and Os) is a game for two players, X and O, who take turns marking the spaces in a 3×3 grid. The player who succeeds in placing three of their marks in a horizontal, vertical, or diagonal row wins the game.",
         picture: "https://cdn.filestackcontent.com/0i3gBB8qTgm2HTK04Bx9", 
-},
-            {
+},{
         name: "Snake",
         game: "snake",
         year: 1976,
         description: "Snake is the common name for a video game concept where the player maneuvers a line which grows in length, with the line itself being a primary obstacle.",
-        picture: "https://cdn.filestackcontent.com/CB1Ay5MYSGmvu1nRLAms"
+        picture: "http://www.coolmath-games.com/sites/cmatgame/files/snake.png"
 },
   {
         name: "Pong",
@@ -56,9 +55,7 @@ let data = [{
         year: 1972,
         description: "Pong is one of the earliest arcade video games. It is a table tennis sports game featuring simple two-dimensional graphics.",
         picture: "https://cdn.filestackcontent.com/CB1Ay5MYSGmvu1nRLAms", 
-},         
-               
-           ];
+}];
 
 for (let i=0; i< data.length; i++){
     Game.findOneAndUpdate(
