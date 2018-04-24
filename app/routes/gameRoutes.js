@@ -1,8 +1,11 @@
+const express = require('express');
+const router = express.Router();
 // We import our game schema
 import Models from '../models/';
 
 // Get all the games sorted by postDate
 const getGames = (req, res) => {
+    console.log('Games hit');
     // Query the db, if no errors send all the games to the client
     Models.Game.find(null, null, { sort: { postDate : 1 } }, (err, games) => {
         if (err) {
@@ -48,19 +51,14 @@ const postGame = (req, res) => {
   });
 };
 
-// Play the game filter by ID
-//const playGame = (req, res) => {
-//// We remove the game by the given id and send a message back if no errors
-//  Game.remove(
-//    { _id: req.params.id },
-//    err => {
-//      if (err) {
-//        res.send(err);
-//      }
-//      res.json({ message: 'successfully deleted' }); // A simple JSON answer to inform the client
-//    }
-//  );
-//};
+router.route('/games')
+    .post(postGame)
+    .get(getGame);
+router.route('/games/:id')
+    .get(getGame);
+router.route('/games/play/:id')
+    .get(playGame);
+
 
 // We export our functions to be used in the server routes
-export { getGames, getGame, postGame, playGame};
+module.exports = router; 

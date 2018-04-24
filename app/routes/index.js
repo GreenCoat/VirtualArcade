@@ -8,10 +8,15 @@ const router = express.Router();
 // this is just to save a little typing so in my api routes I don't have to put
 // /api in front of each route.
 router.use('/api', require('./userRoutes'));
+router.use(require('./gameRoutes'));
 
-// add catch all route to current router
-// router.route("*").get((req, res) => {
-//   res.sendFile('client/dist/index.html', { root: __dirname });
-// });
+//Get static files
+router.use(express.static(__dirname + '/client/dist'));
+
+//add catch all route to current router
+router.route("*").get((req, res) => {
+  console.log('Route fail');
+  res.sendFile('client/dist/index.html', { root: __dirname });
+});
 
 module.exports = router;

@@ -6,13 +6,27 @@ class Login extends React.Component {
 		super();
 
 		this.state = {
-			username: "",
-			password: ""
+			username: null,
+			password: null
 		}
 
 		this.handleSubmit = (evt) => {
 			evt.preventDefault();
 			console.log('Form submitted');
+			const { username, password } = this.state;
+
+			axios.post('/api/auth', {
+				username,
+				password
+			})
+			.then(user => {
+				update(user.data);
+			})
+			.catch(err => {
+				this.setState({
+					error: err.response.status === 401 ? 'Invalid username or password' : err.message
+				});
+			});
 		}
 
 		this.handleChange = (evt) => {
@@ -25,8 +39,15 @@ class Login extends React.Component {
 		}
 	}
 	render(){
+		const { error } = this.state;
+
 		return (
 			<div>
+				{error &&
+					<div>
+						{error}
+					</div>
+				}
 				<form onSubmit={this.handleSubmit}>
 						<input type="text" id="username" value={this.state.username} onChange={this.handleChange}/>
 						<input type="text" id="password" value={this.state.password} onChange={this.handleChange}/>
