@@ -20,9 +20,11 @@ const options = {
   replset: { socketOptions: { keepAlive: 1, connectTimeoutMS : 30000 } }
 }; // Just a bunch of options for the db connection
 
+//Set up mongo for environment or local
+let MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/gamearcade_db";
 mongoose.Promise = Promise;
 
-mongoose.connect("mongodb://localhost/gamearcade_db", options);
+mongoose.connect(MONGODB_URI, options);
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -92,6 +94,7 @@ app.use((req, res, next) => {
 
 
 // #Set up API routes
+app.use(require('./app/routes/userRoutes'));
 app.route('/games')
   // create a game
   .post(postGame)
