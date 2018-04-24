@@ -13,23 +13,30 @@ ol, ul {
   display: table;
 }
 
+.board-row {
+  margin-left: 350px;
+}
+
 .status {
   margin-bottom: 10px;
+  font-size: 30px;
+  margin-left: 350px;
+
 }
 
 .square {
   background: #fff;
   border: 1px solid #999;
   float: left;
-  font-size: 24px;
+  font-size: 80px;
   font-weight: bold;
   line-height: 34px;
-  height: 34px;
+  height: 130px;   
   margin-right: -1px;
   margin-top: -1px;
   padding: 0;
   text-align: center;
-  width: 34px;
+  width: 130px;
 }
 
 .square:focus {
@@ -45,6 +52,8 @@ ol, ul {
   flex-direction: row;
 }
 
+
 .game-info {
   margin-left: 20px;
 }
+
