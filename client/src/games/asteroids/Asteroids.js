@@ -72,12 +72,12 @@ class Asteroids extends React.Component {
 			let fg = this.state.firing;
 
 			if(tl)
-				pa -= 1;
+				pa -= 5;
 			if(tr)
-				pa += 1;
+				pa += 5;
 
-			px += pv * Math.cos(pa);
-			py += pv * Math.sin(pa);
+			px += pv * Math.cos(pa * Math.PI / 180);
+			py += pv * Math.sin(pa * Math.PI / 180);
 
 			if(fg)
 				console.log('Pew');

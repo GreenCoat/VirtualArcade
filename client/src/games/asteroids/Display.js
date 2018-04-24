@@ -36,9 +36,9 @@ class Display extends React.Component {
 		//Draw play
 		ctx.strokeStyle='white';
 		ctx.beginPath();
-		ctx.moveTo(px - sl * Math.cos(30 + pa), py - sl * Math.sin(30 + pa));
+		ctx.moveTo(px + (sl * Math.cos((pa+20) * Math.PI / 180)), py + (sl * Math.sin((pa+20) * Math.PI / 180)));
 		ctx.lineTo(px, py);
-		ctx.lineTo(px + sl * Math.cos(30 + pa), py - sl * Math.sin(30 + pa));
+		ctx.lineTo(px + (sl * Math.cos((pa-20) * Math.PI / 180)), py + (sl * Math.sin((pa-20) * Math.PI / 180)));
 		ctx.closePath();
 		ctx.stroke();
 	}
