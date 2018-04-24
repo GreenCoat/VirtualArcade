@@ -1,13 +1,12 @@
 import axios from 'axios';
 import React from 'react';
-import { Router, Route, hashHistory, IndexRoute } from 'react-router';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import { AddGameContainer, GamesContainer } from './containers';
 import { Home, Archive, Welcome, About, Contact, DisplayGame, NotFound } from './components';
 import { withUser, update } from './services/withUser';
 
 class App extends React.Component {
   componentDidMount() {
-    console.log('App loaded');
     // this is going to double check that the user is still actually logged in
     // if the app is reloaded. it's possible that we still have a user in sessionStorage
     // but the user's session cookie expired.
@@ -28,8 +27,8 @@ class App extends React.Component {
   render(){
     const { user } = this.props;
     return (
-    <Router history={hashHistory}>
-        <Route path="/" component={Home}>
+    <Router history={browserHistory}>
+      <Route path="/" component={Home}>
         <IndexRoute component={Welcome} />
         <Route path="/about" component={About} />
         <Route path="/contact" component={Contact} />

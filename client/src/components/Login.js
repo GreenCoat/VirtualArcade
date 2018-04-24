@@ -16,10 +16,11 @@ class Login extends React.Component {
 		}
 
 		this.handleChange = (evt) => {
+			let id = evt.target.id;
 			let val = evt.target.value;
 
 			this.setState({
-				username: val
+				[id]: val
 			});
 		}
 	}
@@ -27,8 +28,8 @@ class Login extends React.Component {
 		return (
 			<div>
 				<form onSubmit={this.handleSubmit}>
-						<input type="text" value={this.state.username} onChange={this.handleChange}/>
-						<input type="text" value={this.state.password} onChange={this.handleChange}/>
+						<input type="text" id="username" value={this.state.username} onChange={this.handleChange}/>
+						<input type="text" id="password" value={this.state.password} onChange={this.handleChange}/>
 						<button type='submit'>Login</button>
 				</form>
 			</div>
