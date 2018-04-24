@@ -9,6 +9,7 @@ import Modal from './Modal';
 import Welcome from './Welcome';
 import DisplayGame from './DisplayGame';
 import NotFound from './NotFound';
+import Login from './Login';
 // We export all the components at once
 export {
   About,
@@ -21,5 +22,6 @@ export {
   Modal,
   Welcome,
   DisplayGame,
-  NotFound
+  NotFound,
+  Login
 };
