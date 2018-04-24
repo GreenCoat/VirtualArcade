@@ -5,7 +5,8 @@ import mongoose from 'mongoose';
 import morgan from 'morgan';
 
 // # Import models and routes
-import Game from './app/models/game';
+//let Game = mongoose.model('Game');
+import Models from './app/models';
 import { getGames, getGame, postGame, playGame } from './app/routes/game';
 
 // # Using the express server ap and listen to the port 8080
@@ -51,13 +52,24 @@ let data = [{
 }];
 
 for (let i=0; i< data.length; i++){
-    Game.findOneAndUpdate(
-    data[i], data[i], {upsert:true}, function(err, doc){
-    return "DB Added" ;
-});
-    
+    Models.Game.findOneAndUpdate(
+      data[i], data[i], {upsert:true}, function(err, doc){
+      return "DB Added" ;
+    });    
 }
 
+//Create a default user for testing
+let users = [{
+  username: 'Foo',
+  password: 'Bar'
+}];
+
+for (let i=0; i< users.length; i++){
+    Models.User.findOneAndUpdate(
+      users[i], users[i], {upsert:true}, function(err, doc){
+      return "DB Added" ;
+    });
+}
 
 
 // # Setup Middleware

@@ -18,4 +18,6 @@ const gameSchema = new Schema(
 
 // Export the schema to use somewhere else
 
-export default mongoose.model('Game', gameSchema);
+const Game = mongoose.model('Game', gameSchema);
+
+module.exports = Game;
