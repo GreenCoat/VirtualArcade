@@ -78,19 +78,6 @@ for (let i=0; i< data.length; i++){
     });    
 }
 
-//Create a default user for testing
-let users = [{
-  username: 'Foo',
-  password: 'Bar'
-}];
-
-for (let i=0; i< users.length; i++){
-    Models.User.findOneAndUpdate(
-      users[i], users[i], {upsert:true}, function(err, doc){
-      return "DB Added" ;
-    });
-}
-
 app.listen(port);
 
 console.log(`listening on port ${port}`);

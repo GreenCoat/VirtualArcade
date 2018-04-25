@@ -48,6 +48,7 @@ router.route('/auth')
 router.route('/users')
   // POST to /api/users will create a new user
   .post((req, res, next) => {
+    console.log('creating user');
     db.User.create(req.body)
       .then(user => {
         const { id, username } = user;

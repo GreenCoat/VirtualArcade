@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Link } from 'react-router';
 import Login from './Login';
+import Create from './Create';
 
 export default class Welcome extends PureComponent {
   render () {
@@ -11,6 +12,7 @@ export default class Welcome extends PureComponent {
         <p className="lead">
           <Link className="btn btn-lg" to="/games">Browse!</Link>
           <Login />
+          <Create />
         </p>
       </div>
     );

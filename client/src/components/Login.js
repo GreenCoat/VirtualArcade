@@ -20,6 +20,8 @@ class Login extends React.Component {
 				password
 			})
 			.then(user => {
+				console.log('User success');
+				console.log(user);
 				update(user.data);
 			})
 			.catch(err => {
