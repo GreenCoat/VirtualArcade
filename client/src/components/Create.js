@@ -23,8 +23,9 @@ class Create extends React.Component {
 
 	this.createLogin = (evt) => {
 		evt.preventDefault();
-		
+
 		const { username, password } = this.state;
+		const { history } = this.props;
 
 		this.setState({
 			error: null
@@ -43,9 +44,10 @@ class Create extends React.Component {
     		})
       		.then(user => {
         		// if the response is successful, make them log in
-        		//history.push('/login');
+        		//history.push('/contact');
       		})
       		.catch(err => {
+      			console.log(err);
 				this.setState({
           		error: err.response.data.message || err.message
         	});

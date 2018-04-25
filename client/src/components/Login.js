@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React from 'react';
+import { update } from '../services/withUser';
 
 class Login extends React.Component {
 	constructor(){
@@ -12,19 +13,22 @@ class Login extends React.Component {
 
 		this.handleSubmit = (evt) => {
 			evt.preventDefault();
-			console.log('Form submitted');
+			console.log('logging in');			
+
 			const { username, password } = this.state;
+			const { history } = this.props;
 
 			axios.post('http://localhost:8080/api/auth', {
 				username,
 				password
 			})
 			.then(user => {
-				console.log('User success');
-				console.log(user);
 				update(user.data);
+				//history.push('/');
+
 			})
 			.catch(err => {
+				console.log(err);
 				this.setState({
 					error: err.response.status === 401 ? 'Invalid username or password' : err.message
 				});
