@@ -29,7 +29,7 @@ app.use((req, res, next) => {
 require('./passport')(app);
 
 // #Set up routes
-app.use('/', require('./app/routes/userRoutes'));
+app.use(require('./app/routes'));
 
 // # Setup database connection using Mongoose
 

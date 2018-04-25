@@ -10,7 +10,7 @@ class App extends React.Component {
     // this is going to double check that the user is still actually logged in
     // if the app is reloaded. it's possible that we still have a user in sessionStorage
     // but the user's session cookie expired.
-    axios.get('/api/auth')
+    axios.get('http://localhost:8080/api/auth')
       .then(res => {
         // if we get here, the user's session is still good. we'll update the user
         // to make sure we're using the most recent values just in case

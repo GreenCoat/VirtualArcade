@@ -2,10 +2,8 @@ const express = require('express');
 const router = express.Router();
 // We import our game schema
 import Models from '../models/';
-
 // Get all the games sorted by postDate
 const getGames = (req, res) => {
-    console.log('Games hit');
     // Query the db, if no errors send all the games to the client
     Models.Game.find(null, null, { sort: { postDate : 1 } }, (err, games) => {
         if (err) {
@@ -53,7 +51,7 @@ const postGame = (req, res) => {
 
 router.route('/games')
     .post(postGame)
-    .get(getGame);
+    .get(getGames);
 router.route('/games/:id')
     .get(getGame);
 router.route('/games/play/:id')

@@ -15,7 +15,7 @@ class Login extends React.Component {
 			console.log('Form submitted');
 			const { username, password } = this.state;
 
-			axios.post('/api/auth', {
+			axios.post('http://localhost:8080/api/auth', {
 				username,
 				password
 			})
