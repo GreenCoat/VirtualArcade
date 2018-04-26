@@ -32,25 +32,12 @@ class Welcome extends PureComponent {
       return;
     }
 
-    axios.get('http://localhost:8080/api/stuff')
-      .then(res => {
-        this.setState({
-          stuff: res.data
-        });
-      })
-      .catch(err => {
-        // if we got an error, we'll just log it and set stuff to an empty array
-        console.log(err);
-        this.setState({
-          stuff: []
-      });
-    });
+    axios.defaults.withCredentials = true;
   }
 
 
   render () {
     const { user } = this.props;
-    const { stuff } = this.state;
 
     return (
       <div className="inner cover">

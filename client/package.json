@@ -3,6 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "proxy": {
+    "/api": {
+      "target": "http://localhost:8080/",
+      "changeOrigin": true
+    }
+  },
   "dependencies": {
     "axios": "^0.18.0",
     "webpack": "^4.5.0",
@@ -16,6 +22,5 @@
     "file-loader": "^1.1.11",
     "react-hot-loader": "3.0.0-beta.6",
     "style-loader": "^0.20.3"
-  },
-  "proxy": "http://localhost:8080/"
+  }
 }

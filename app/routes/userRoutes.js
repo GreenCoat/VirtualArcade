@@ -5,7 +5,8 @@ const db = require('../models');
 const mustBeLoggedIn = require('../middleware/mustBeLoggedIn');
 
 function getCurrentUser(req, res) {
-  console.log('Get current user: ' + req.user);
+  console.log('CURRENT:');
+  console.log(req.session);
   // I'm picking only the specific fields its OK for the audience to see publicly
   // never send the whole user object in the response, and only show things it's OK
   // for others to read (like ID, name, email address, etc.)
@@ -18,6 +19,8 @@ function getCurrentUser(req, res) {
 router.route('/auth')
   // GET to /api/auth will return current logged in user info
   .get((req, res) => {
+    console.log('GET:');
+    console.log(req.session);
     if (!req.user) {
       console.log('User not logged in');
       return res.status(401).json({
@@ -30,6 +33,8 @@ router.route('/auth')
   })
   // POST to /api/auth with username and password will authenticate the user
   .post(passport.authenticate('local'), (req, res) => {
+    console.log('LOGIN:');
+    console.log(req.session);
     if (!req.user) {
       return res.status(401).json({
         message: 'Invalid username or password.'
@@ -39,8 +44,8 @@ router.route('/auth')
   })
   // DELETE to /api/auth will log the user out
   .delete((req, res) => {
-    console.log('Trying to delete');
-    console.log(req.user);
+    console.log('DELETE:');
+    console.log(req.session);
     req.logout();
     req.session.destroy();
     res.json({
@@ -51,6 +56,8 @@ router.route('/auth')
 router.route('/users')
   // POST to /api/users will create a new user
   .post((req, res, next) => {
+    console.log('CREATE:');
+    console.log(req.session);
     db.User.create(req.body)
       .then(user => {
         const { id, username } = user;
@@ -72,18 +79,6 @@ router.route('/users')
         // to the next middleware to handle the error.
         next(err);
       });
-  });
-
-// this route is just returns an array of strings if the user is logged in
-// to demonstrate that we can ensure a user must be logged in to use a route
-router.route('/stuff')
-  .get(mustBeLoggedIn(), (req, res) => {
-    // at this point we can assume the user is logged in. if not, the mustBeLoggedIn middleware would have caught it
-    res.json([
-      'Bears',
-      'Beets',
-      'Battlestar Galactica'
-    ]);
   });
 
 module.exports = router;

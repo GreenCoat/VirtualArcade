@@ -19,11 +19,12 @@ module.exports = (app) => {
     // the user's activity to extend their session. If you want an absolute session
     // expiration, set to false
     rolling: true,
-    name: 'virtualArcade', // don't use the default session cookie name
+    name: 'virtualarcade', // don't use the default session cookie name
     // set your options for the session cookie
     cookie: {
-      httpOnly: true,
+      httpOnly: false,
       secure: false,
+      maxAge: 20 * 60 * 1000,
     }
   }));
 

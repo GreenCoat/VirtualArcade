@@ -25,7 +25,6 @@ const getGame = (req, res) => {
     });
 }
 
-
 router.route('/games')
     .get(getGames);
 router.route('/games/:id')
