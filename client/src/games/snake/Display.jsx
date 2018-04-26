@@ -23,6 +23,8 @@ class Display extends React.Component {
 		//Draws black canvas
 		context.fillStyle='black';
 		context.fillRect(0, 0, canvas.width, canvas.height);
+		context.strokeStyle='lime';
+		context.strokeRect(0, 0, canvas.width, canvas.height);
 
 		//Draws game start/game over message
 		if(!this.props.gameOn){
