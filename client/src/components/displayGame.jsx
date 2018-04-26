@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Link } from 'react-router';
 //Add game to this list to use
-import { Hangman, TTT, Snake, Pong } from '../games'
+import { Hangman, TTT, Snake, Asteroids, Pong } from '../games'
 
 export default class DisplayGame extends PureComponent {
   render () {
@@ -9,8 +9,10 @@ export default class DisplayGame extends PureComponent {
   	const components = {
   		hangman: Hangman,
   		ttt: TTT,
-        snake: Snake,
-        pong : Pong
+      snake: Snake,
+      asteroids: Asteroids,
+      snake: Snake,
+      pong : Pong
   	}
   	const Game = components[this.props.params.game];
     return (
