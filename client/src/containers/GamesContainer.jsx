@@ -9,7 +9,6 @@ export default class GamesContainer extends Component {
     this.state = { games: [], selectedGame: {}, searchBar: '' };
     // Bind the functions to this (context) 
     this.toggleModal = this.toggleModal.bind(this);
-    this.deleteGame = this.deleteGame.bind(this);
     this.setSearchBar = this.setSearchBar.bind(this);
     this.playGame = this.playGame.bind(this);
   }
@@ -38,22 +37,6 @@ export default class GamesContainer extends Component {
     $('#game-modal').modal();
   }
 
-  deleteGame (id) {
-      console.log("foo")
-    fetch(`http://localhost:8080/games/${id}`, {
-      headers: new Headers({
-        'Content-Type': 'application/json',
-      }),
-      method: 'DELETE',
-    })
-    .then(response => response.json())
-    .then(response => {
-      // The game is also removed from the state thanks to the filter function
-      this.setState({ games: this.state.games.filter(game => game._id !== id) }); 
-      console.log(response.message);
-    });
-  }
-
   setSearchBar (event) { 
     // Super still filters super mario thanks to toLowerCase
     this.setState({ searchBar: event.target.value.toLowerCase() });
@@ -69,7 +52,6 @@ export default class GamesContainer extends Component {
           searchBar={searchBar}
           setSearchBar={this.setSearchBar}
           toggleModal={this.toggleModal}
-         // deleteGame={this.deleteGame}
          playGame={this.playGame}
         />
       </div>

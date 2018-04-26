@@ -14,13 +14,13 @@ ol, ul {
 }
 
 .board-row {
-  margin-left: 350px;
+  margin: auto;
 }
 
 .status {
   margin-bottom: 10px;
   font-size: 30px;
-  margin-left: 350px;
+  margin: auto;
 
 }
 
@@ -50,6 +50,12 @@ ol, ul {
 .game {
   display: flex;
   flex-direction: row;
+}
+
+.board {
+  margin: auto;
+  width: 400px;
+  text-align: center;
 }
 
 

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React from 'react';
+import { Link } from 'react-router';
 import { updateUser } from '../services/withUser';
 
 class Login extends React.Component {
@@ -8,7 +9,8 @@ class Login extends React.Component {
 
 		this.state = {
 			username: null,
-			password: null
+			password: null,
+			message: 'Enter Authorization:'
 		}
 
 		this.handleSubmit = (evt) => {
@@ -24,12 +26,12 @@ class Login extends React.Component {
 			})
 			.then(user => {
 				updateUser(user.data);
-				//history.push('/');
+				window.location.href="/games";
 			})
 			.catch(err => {
 				console.log(err);
 				this.setState({
-					error: err.response.status === 401 ? 'Invalid username or password' : err.message
+					message: err.response.status === 401 ? 'Invalid username or password' : err.response.status === 400 ? 'Username or password cannot be blank' :err.message
 				});
 			});
 		}
@@ -44,19 +46,19 @@ class Login extends React.Component {
 		}
 	}
 	render(){
-		const { error } = this.state;
+		const { message } = this.state;
 
 		return (
-			<div>
-				{error &&
+			<div className="container" style={{fontFamily: "'Press Start 2P', monospace", fontSize: "24px", background: "black", color: "lime", padding: "20px"}}>
 					<div>
-						{error}
+						{ message }
 					</div>
-				}
-				<form onSubmit={this.handleSubmit}>
-						<input type="text" id="username" value={this.state.username} onChange={this.handleChange}/>
-						<input type="text" id="password" value={this.state.password} onChange={this.handleChange}/>
-						<button type='submit'>Login</button>
+				<form style={{border: "2px solid lime", margin: "10px", padding: "10px"}} onSubmit={this.handleSubmit}>
+						Username: <input type="text" style={{fontFamily: "'Press Start 2P', monospace", padding: "5px", border: "1px solid lime"}} id="username" value={this.state.username} onChange={this.handleChange}/><br/>
+						Password: <input type="text" style={{fontFamily: "'Press Start 2P', monospace", padding: "5px", border: "1px solid lime"}} id="password" value={this.state.password} onChange={this.handleChange}/><br/>
+						<button type='submit' style={{fontFamily: "'Press Start 2P', monospace", fontSize: "24px"}}>Authenticate</button><br/>
+						<div style={{margin: "10px"}}>OR</div>
+						<Link style={{fontFamily: "'Press Start 2P', monospace", fontSize: "24px", color: "lime"}}  to="/create">Request Authorization</Link>
 				</form>
 			</div>
 		);

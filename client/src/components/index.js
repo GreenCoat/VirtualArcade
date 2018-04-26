@@ -7,6 +7,7 @@ import Welcome from './Welcome';
 import DisplayGame from './DisplayGame';
 import NotFound from './NotFound';
 import Login from './Login';
+import Create from './Create';
 // We export all the components at once
 export {
   Game,
@@ -17,5 +18,6 @@ export {
   Welcome,
   DisplayGame,
   NotFound,
-  Login
+  Login,
+  Create
 };

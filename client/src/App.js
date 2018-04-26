@@ -1,8 +1,8 @@
 import axios from 'axios';
 import React from 'react';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
-import { AddGameContainer, GamesContainer } from './containers';
-import { Home, Archive, Welcome, DisplayGame, NotFound } from './components';
+import { GamesContainer } from './containers';
+import { Home, Archive, Login, Create, DisplayGame, NotFound } from './components';
 import { withUser, updateUser } from './services/withUser';
 
 class App extends React.Component {
@@ -29,12 +29,13 @@ class App extends React.Component {
     const { user } = this.props;
     return (
     <Router history={browserHistory}>
-      <Route path="/" component={Home}>
-        <IndexRoute component={Welcome} />
+      <Route path="/" component={Archive}>
+        <IndexRoute component={Login} />
+        <Route path="login" component={Login} />
+        <Route path="create" component={Create} />
       </Route>
       <Route path="/games" component={Archive}>
         <IndexRoute component={GamesContainer} />
-        <Route path="add" component={AddGameContainer} />
         <Route path=":game" component={DisplayGame} />
       </Route>
       <Route path="*" component={NotFound} />

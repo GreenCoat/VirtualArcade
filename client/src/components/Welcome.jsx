@@ -3,7 +3,7 @@ import React, { PureComponent } from 'react';
 import { Link } from 'react-router';
 import Login from './Login';
 import Create from './Create';
-import { withUser } from '../services/withUser';
+import { withUser, updateUser } from '../services/withUser';
 
 class Welcome extends PureComponent {
   constructor(){
@@ -17,7 +17,7 @@ class Welcome extends PureComponent {
       evt.preventDefault();
 
       axios.delete('http://localhost:8080/api/auth')
-      .then(user => console.log('user logged out'))
+      .then(() => {updateUser(null);});
     }
 
     this.userProfile = (evt) => {
