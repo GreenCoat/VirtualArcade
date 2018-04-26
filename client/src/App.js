@@ -3,7 +3,7 @@ import React from 'react';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import { AddGameContainer, GamesContainer } from './containers';
 import { Home, Archive, Welcome, About, Contact, DisplayGame, NotFound } from './components';
-import { withUser, update } from './services/withUser';
+import { withUser, updateUser } from './services/withUser';
 
 class App extends React.Component {
   componentDidMount() {
@@ -19,7 +19,7 @@ class App extends React.Component {
       .catch(err => {
         // if we get a 401 response, that means the user is no longer logged in
         if (err.response.status === 401) {
-          update(null);
+          updateUser(null);
         }
       });
   }

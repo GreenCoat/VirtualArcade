@@ -2,8 +2,10 @@ module.exports = function() {
   return (req, res, next) => {
     // if the user is authenticated, we're all good here. let the next middleware handle it.
     if (req.isAuthenticated()) {
+      console.log('User is fine');
       return next();
     }
+    console.log('User error: ' + req.user);
 
     // if we've gotten to this point, that means the user is NOT authenticated but should be
     // so let's respond with an appropriate 403 Forbidden reponse

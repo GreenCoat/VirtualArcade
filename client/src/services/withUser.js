@@ -7,18 +7,15 @@ import React from "react";
 // in their browser. if we don't back the user by something that remains
 // between refreshes, the user will "lose" their logged in state.
 const stateFromStore = sessionStorage.getItem('user');
-console.log(stateFromStore);
 let state = stateFromStore ? JSON.parse(stateFromStore) : null;
 
 const subscribers = [];
 
 const unsubscribe = subscriber => {
-  console.log('unsubscribing');
   const index = subscribers.findIndex(subscriber);
   index >= 0 && subscribers.splice(index, 1);
 };
 const subscribe = subscriber => {
-  console.log('subscribing');
   subscribers.push(subscriber);
   return () => unsubscribe(subscriber);
 };
@@ -30,7 +27,6 @@ export const withUser = Component => {
     }
     render() {
       const newProps = { ...this.props, user: state };
-      console.log(newProps);
       return <Component {...newProps} />;
     }
     componentWillUnmount() {
@@ -39,8 +35,7 @@ export const withUser = Component => {
   };
 };
 
-export const update = newState => {
-  console.log('updating');
+export const updateUser = newState => {
   state = newState;
   // update the "user" key in the session storage with whatever the new state value is
   // Remember to stringify the state object because sessionStorage can only store strings

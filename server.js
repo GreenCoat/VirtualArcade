@@ -12,10 +12,10 @@ const app = express();
 const port = process.env.PORT || 8080;
 
 // # Setup Middleware
-
-app.use(bodyParser.urlencoded({ extended: true}));
-app.use(bodyParser.json());
 app.use(morgan('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true}));
+
 
 // Enable CORS so that we can make HTTP request from webpack-dev-server
 app.use((req, res, next) => {

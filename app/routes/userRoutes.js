@@ -5,7 +5,7 @@ const db = require('../models');
 const mustBeLoggedIn = require('../middleware/mustBeLoggedIn');
 
 function getCurrentUser(req, res) {
-  console.log('Get current user');
+  console.log('Get current user: ' + req.user);
   // I'm picking only the specific fields its OK for the audience to see publicly
   // never send the whole user object in the response, and only show things it's OK
   // for others to read (like ID, name, email address, etc.)
@@ -19,7 +19,7 @@ router.route('/auth')
   // GET to /api/auth will return current logged in user info
   .get((req, res) => {
     if (!req.user) {
-      console.log('No user');
+      console.log('User not logged in');
       return res.status(401).json({
         message: 'You are not currently logged in.'
       })
@@ -35,12 +35,12 @@ router.route('/auth')
         message: 'Invalid username or password.'
       })
     }
-
     getCurrentUser(req, res);
   })
   // DELETE to /api/auth will log the user out
   .delete((req, res) => {
-    console.log(req);
+    console.log('Trying to delete');
+    console.log(req.user);
     req.logout();
     req.session.destroy();
     res.json({

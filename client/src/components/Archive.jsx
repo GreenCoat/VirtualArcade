@@ -1,13 +1,22 @@
 import React, { PureComponent } from 'react';
 import { Link } from 'react-router';
+import { withUser } from '../services/withUser';
 
-export default class Layout extends PureComponent {
+class Layout extends PureComponent {
   render () {
+    const { user } = this.props;
+
     return (
       <div className="view">
         <nav className="navbar navbar-inverse">
           <div className="container">
             <div className="navbar-header">
+              {user && 
+          <div>
+          {user.username}
+          <button>Logout</button>
+          </div>
+        }
               <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                 <span className="sr-only">Toggle navigation</span>
                 <span className="icon-bar" />
@@ -28,3 +37,5 @@ export default class Layout extends PureComponent {
     );
   }
 }
+
+export default withUser(Layout);

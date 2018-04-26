@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React from 'react';
-import { update } from '../services/withUser';
+import { updateUser } from '../services/withUser';
 
 class Login extends React.Component {
 	constructor(){
@@ -23,9 +23,8 @@ class Login extends React.Component {
 				password
 			})
 			.then(user => {
-				update(user.data);
+				updateUser(user.data);
 				//history.push('/');
-
 			})
 			.catch(err => {
 				console.log(err);

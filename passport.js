@@ -1,4 +1,4 @@
-const session = require('express-session');
+const sessionExp = require('express-session');
 const cookieparser = require('cookie-parser');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
@@ -9,8 +9,8 @@ module.exports = (app) => {
   // these two middlewares are required to make passport work with sessions
   // sessions are optional, but an easy solution to keeping users
   // logged in until they log out.
-  app.use(cookieparser());
-  app.use(session({
+  app.use(cookieparser('keyboard cat'));
+  app.use(sessionExp({
     // this should be changed to something cryptographically secure for production
     secret: 'keyboard cat',
     resave: false,
@@ -19,16 +19,13 @@ module.exports = (app) => {
     // the user's activity to extend their session. If you want an absolute session
     // expiration, set to false
     rolling: true,
-    name: 'sid', // don't use the default session cookie name
+    name: 'foobar', // don't use the default session cookie name
     // set your options for the session cookie
     cookie: {
       httpOnly: true,
+      secure: false,
       // the duration in milliseconds that the cookie is valid
-      maxAge: 20 * 60 * 1000, // 20 minutes
-      // recommended you use this setting in production if you have a well-known domain you want to restrict the cookies to.
-      // domain: 'your.domain.com',
-      // recommended you use this setting in production if your site is published using HTTPS
-      // secure: true,
+      maxAge: 20 * 60 * 1000 // 20 minutes
     }
   }));
 
@@ -37,6 +34,7 @@ module.exports = (app) => {
   // It's recommended you only serialize something like a unique username or user ID.
   // I prefer user ID.
   passport.serializeUser((user, done) => {
+    console.log('serializing user: ' + user._id);
     done(null, user._id);
   });
 
@@ -45,7 +43,8 @@ module.exports = (app) => {
   // back into the actual User record from our Mongo database.
   // Here, we simply find the user with the matching ID and return that.
   // This will cause the User record to be available on each authenticated request via the req.user property.
-  passport.deserializeUser(function (userId, done) {
+  passport.deserializeUser((userId, done) => {
+    console.log('Deserialize: ' + userId);
     db.User.findById(userId)
       .then(function (user) {
         done(null, user);
