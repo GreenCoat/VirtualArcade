@@ -9,7 +9,6 @@ export default class GamesContainer extends Component {
     this.state = { games: [], selectedGame: {}, searchBar: '' };
     // Bind the functions to this (context) 
     this.toggleModal = this.toggleModal.bind(this);
-    this.deleteGame = this.deleteGame.bind(this);
     this.setSearchBar = this.setSearchBar.bind(this);
     this.playGame = this.playGame.bind(this);
   }
@@ -53,7 +52,6 @@ export default class GamesContainer extends Component {
           searchBar={searchBar}
           setSearchBar={this.setSearchBar}
           toggleModal={this.toggleModal}
-         // deleteGame={this.deleteGame}
          playGame={this.playGame}
         />
       </div>
