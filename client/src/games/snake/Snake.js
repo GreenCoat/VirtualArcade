@@ -172,7 +172,7 @@ class Snake extends React.Component {
 	render(){
 		return (
 			<div id='snake' onKeyDown={this.changeVelocity}>
-				SNAKE
+				<span style={{fontFamily: "'Press Start 2P', monospace", fontSize: "24px", color: "lime"}}>SNAKE</span>
 				<Display 
 					px={this.state.playerX}
 					py={this.state.playerY}

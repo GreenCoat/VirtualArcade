@@ -104,7 +104,7 @@ class Hangman extends React.Component {
 	render() {
 		return (
 			<div id="hangman">
-			HANGMAN
+			<span style={{fontFamily: "'Press Start 2P', monospace", fontSize: "24px", color: "lime"}}>HANGMAN</span>
 			<Display
 				makeGuess = {this.makeGuess}
 				guesses = {this.state.guesses}

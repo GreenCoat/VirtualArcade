@@ -61,6 +61,7 @@ class Board extends React.Component {
 
     return (
       <div className="board">
+        <div style={{fontFamily: "'Press Start 2P', monospace", fontSize: "24px", color: "lime", display: "block"}}>Tic-Tac-Toe</div>
         <div className="status">{status}</div>
         <div className="board-row">
           {this.renderSquare(0)}

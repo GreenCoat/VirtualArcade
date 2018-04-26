@@ -150,7 +150,7 @@ class Pong extends React.Component {
     render() {
         return ( <
             div id = 'pong' >
-            PONG 
+            <span style={{fontFamily: "'Press Start 2P', monospace", fontSize: "24px", color: "lime"}}>PONG</span> 
             <Display 
                 ballX = {this.state.ballX}
                 ballY = {this.state.ballY}
