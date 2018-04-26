@@ -55,7 +55,7 @@ class Hangman extends React.Component {
 
 	this.getWord = () => {
 		//Get/make word list
-		let words = ['Foobar', 'Pineapple', 'Potato'];
+		let words = ['Foobar', 'Orange', 'Potato', 'Katana', 'Scimitar', 'Apple'];
 		//Get random word from list
 		let word = words[Math.floor(Math.random() * words.length)].toUpperCase();
 		//Return word converted to an array
@@ -104,7 +104,7 @@ class Hangman extends React.Component {
 	render() {
 		return (
 			<div id="hangman">
-			HANGMAN
+			<span style={{fontFamily: "'Press Start 2P', monospace", fontSize: "24px", color: "lime"}}>HANGMAN</span>
 			<Display
 				makeGuess = {this.makeGuess}
 				guesses = {this.state.guesses}

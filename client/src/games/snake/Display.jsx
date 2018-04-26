@@ -23,12 +23,18 @@ class Display extends React.Component {
 		//Draws black canvas
 		context.fillStyle='black';
 		context.fillRect(0, 0, canvas.width, canvas.height);
+		context.strokeStyle='lime';
+		context.strokeRect(0, 0, canvas.width, canvas.height);
 
 		//Draws game start/game over message
 		if(!this.props.gameOn){
 			context.font='24px monospace';
 			context.fillStyle='white';
-			context.fillText('Press any key to start', 45, canvas.height/2);
+			if(this.props.finalScore == 0){
+				context.fillText('Press any key to start', 45, canvas.height/2);
+			} else {
+				context.fillText('Final Score: ' + this.props.finalScore, 100, canvas.height/2);
+			}
 		}
 
 		//Draws player
@@ -46,6 +52,7 @@ class Display extends React.Component {
 	render() {
 		return (
 			<div>
+				<div>Score: {this.props.score}</div>
 				<canvas ref='canvas' width='400' height='400'></canvas>
 			</div>
 		);

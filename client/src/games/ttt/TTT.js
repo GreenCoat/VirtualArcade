@@ -5,14 +5,8 @@ import { Link } from 'react-router';
 import './ttt.css';
 
 const TTT = props => (
-<div className="game">
-        <div className="game-board">
-          <Board />
-        </div>
-        <div className="game-info">
-          <div>{/* status */}</div>
-          <ol>{/* TODO */}</ol>
-        </div>
+      <div className="game">
+        <Board />
       </div>
 
 );
@@ -66,7 +60,8 @@ class Board extends React.Component {
     
 
     return (
-      <div>
+      <div className="board">
+        <div style={{fontFamily: "'Press Start 2P', monospace", fontSize: "24px", color: "lime", display: "block"}}>Tic-Tac-Toe</div>
         <div className="status">{status}</div>
         <div className="board-row">
           {this.renderSquare(0)}
@@ -88,14 +83,6 @@ class Board extends React.Component {
   }
 }
 
-
-
-//// ========================================
-//
-//ReactDOM.render(
-//  <Game />,
-//  document.getElementById('root')
-//);
 
 function calculateWinner(squares) {
   const lines = [

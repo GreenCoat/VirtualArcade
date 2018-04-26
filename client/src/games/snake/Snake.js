@@ -15,7 +15,9 @@ class Snake extends React.Component {
 			trail: [],
 			tailLength: 5,
 			tileCount: 20,
-			gameOn: false
+			gameOn: false,
+			score: 0,
+			finalScore: 0
 		}
 
 		this.changeVelocity = (evt) => {
@@ -81,6 +83,7 @@ class Snake extends React.Component {
 				let tl = this.state.tailLength;
 				let tc = this.state.tileCount;
 				let trail = this.state.trail;
+				let score = this.state.score;
 
 				if(px<0){
 					px=tc-1;
@@ -103,6 +106,7 @@ class Snake extends React.Component {
 
 				if(px == ax && py == ay){
 					tl++;
+					score++;
 					ax=this.newPosition();
 					ay=this.newPosition();
 				}
@@ -121,13 +125,16 @@ class Snake extends React.Component {
 						appleX: ax,
 						appleY: ay,
 						trail: trail,
-						tailLength: tl
+						tailLength: tl,
+						score: score
 					});
 				}
 			}
 		}
 
 		this.gameOver = () => {
+			let finalScore = this.state.score;
+
 			this.setState({
 				playerX: this.newPosition(),
 				playerY: this.newPosition(),
@@ -137,7 +144,9 @@ class Snake extends React.Component {
 				yVelocity: 0,
 				trail: [],
 				tailLength: 5,
-				gameOn: false
+				gameOn: false,
+				score: 0,
+				finalScore: finalScore
 			});
 		}
 
@@ -163,7 +172,7 @@ class Snake extends React.Component {
 	render(){
 		return (
 			<div id='snake' onKeyDown={this.changeVelocity}>
-				SNAKE
+				<span style={{fontFamily: "'Press Start 2P', monospace", fontSize: "24px", color: "lime"}}>SNAKE</span>
 				<Display 
 					px={this.state.playerX}
 					py={this.state.playerY}
@@ -173,6 +182,8 @@ class Snake extends React.Component {
 					xy={this.state.yVelocity}
 					trail={this.state.trail}
 					gameOn={this.state.gameOn}
+					score={this.state.score}
+					finalScore={this.state.finalScore}
 				/>
 			</div>
 		)

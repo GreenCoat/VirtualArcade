@@ -27,6 +27,8 @@ a:hover {
 html,
 body {
   height: 100%;
+  margin: 0;
+  padding: 0;
 }
 body {
   color: #fff;
@@ -170,12 +172,14 @@ body {
 }
 */
 body{
-  font-family: 'Press Start 2P', cursive;;
-  background: #00173E; /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(#00173E, #6899F8); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(#00173E, #6899F8); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(#00173E, #6899F8); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(#00173E, #6899F8); /* Standard syntax */
+  font-family: 'Press Start 2P', monospace;
+  background: #000;
+  /*background: #000800; /* For browsers that do not support gradients */
+  /*background: -webkit-linear-gradient(#25872E, #000800); /* For Safari 5.1 to 6.0 */
+  /*background: -o-linear-gradient(#25872E, #000800); /* For Opera 11.1 to 12.0 */
+  /*background: -moz-linear-gradient(#25872E, #000800); /* For Firefox 3.6 to 15 */
+  /*background: linear-gradient(#25872E, #000800); /*Standard syntax*/
+
 }
 #content {
   height:inherit;
@@ -186,9 +190,11 @@ body{
   background-position: center center;
   background-attachment: fixed;
   background-size: cover;
-  //font-family: PressStartFont;
+  font-family: PressStartFont;
   font-size:12px;
   height: inherit;
+  margin: 0;
+  padding: 0;
 
 }
 
@@ -245,17 +251,7 @@ font-family: PressStartFont;
     font-family: PressStartFont;
     src: url(PressStart2P.ttf);
 }*/
-footer {
-  height: 50px;
-  background-image: url('https://cdn.filestackcontent.com/WNgDU84Tiu2kK3SDhwEQ');
-  background-repeat: no-repeat;
-  background-position: center center;
-  //background-attachment: fixed;
-  background-size: cover;
-  bottom:0;
-  position:absolute;
-  width:100%;
-}
+
 .thumbnail img {
   min-width:350px;
   min-height:250px;
@@ -326,11 +322,11 @@ footer {
   color:white;
 }
 .modal-content {
-  background: #00173E; /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(#00173E, #6899F8); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(#00173E, #6899F8); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(#00173E, #6899F8); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(#00173E, #6899F8); /* Standard syntax */
+  background: #000800; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(#25872E, #000800); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#25872E, #000800); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#25872E, #000800); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#25872E, #000800); /* Standard syntax */
   font-size:10px;
 }
 .modal-header {
@@ -369,5 +365,9 @@ footer {
 
 .add-game-panel span:hover{
   color:yellow;
+  text-decoration:underline;
+}
+
+.va-btn:hover {
   text-decoration:underline;
 }
