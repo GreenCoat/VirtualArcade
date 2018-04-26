@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { Component } from 'react';
 import { Modal, GamesListManager } from '../components';
 
@@ -25,13 +26,9 @@ export default class GamesContainer extends Component {
   }
 
   getGames () {
-    fetch('http://localhost:8080/games', {
-      headers: new Headers({
-        'Content-Type': 'application/json'
-      })
-    })
-    .then(response => response.json()) // The json response to object literal
-    .then(data => this.setState({ games: data }));
+    axios.get('http://localhost:8080/games')
+    .then(response => 
+    this.setState({ games: response.data}))
   }
 
     playGame (index) {

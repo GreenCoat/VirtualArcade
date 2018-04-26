@@ -5,12 +5,33 @@ import mongoose from 'mongoose';
 import morgan from 'morgan';
 
 // # Import models and routes
-import Game from './app/models/game';
-import { getGames, getGame, postGame, playGame } from './app/routes/game';
+import Models from './app/models';
 
-// # Using the express server ap and listen to the port 8080
+// # Using the express server app and listen to the port 8080
 const app = express(); 
 const port = process.env.PORT || 8080;
+
+// # Setup Middleware
+app.use(morgan('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true}));
+
+
+// Enable CORS so that we can make HTTP request from webpack-dev-server
+app.use((req, res, next) => {
+  console.log('CORS ' + req.session);
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.header('Access-Control-Allow-Methods', 'GET,POST,DELETE');
+  res.header("Access-Control-Allow-Headers", "Content-Type, *");
+  res.header("Access-Control-Allow-Credentials", true);
+  next();
+});
+
+//Set up passport
+require('./passport')(app);
+
+// #Set up routes
+app.use(require('./app/routes'));
 
 // # Setup database connection using Mongoose
 
@@ -19,9 +40,11 @@ const options = {
   replset: { socketOptions: { keepAlive: 1, connectTimeoutMS : 30000 } }
 }; // Just a bunch of options for the db connection
 
-mongoose.Promise = Promise;
+//Set up mongo for environment or local
+let MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/gamearcade_db";
+mongoose.Promise = global.Promise;
 
-mongoose.connect("mongodb://localhost/gamearcade_db", options);
+mongoose.connect(MONGODB_URI, options);
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -58,52 +81,11 @@ let data = [{
 }];
 
 for (let i=0; i< data.length; i++){
-    Game.findOneAndUpdate(
-    data[i], data[i], {upsert:true}, function(err, doc){
-    return "DB Added" ;
-});
-    
+    Models.Game.findOneAndUpdate(
+      data[i], data[i], {upsert:true}, function(err, doc){
+      return "DB Added" ;
+    });    
 }
-
-
-
-// # Setup Middleware
-
-app.use(bodyParser.urlencoded({ extended: true}));
-app.use(bodyParser.json());
-app.use(morgan('dev'));
-
-// Tell express to get all static assets
-
-app.use(express.static(__dirname + '/client/dist'));
-
-// Enable CORS so that we can make HTTP request from webpack-dev-server
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header('Access-Control-Allow-Methods', 'GET,POST,DELETE');
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
-
-
-// #Set up API routes
-app.route('/games')
-  // create a game
-  .post(postGame)
-  // get all the games
-  .get(getGames);
-app.route('/games/:id')
-  // get a single game
-  .get(getGame);
-  // delete a single game
-//  .delete(deleteGame);
-app.route('/games/play/:id')
-  // play single game by ID
-  .get(playGame);
-// ...For all the other requests just sends back the Homepage
-app.route("*").get((req, res) => {
-  res.sendFile('client/dist/index.html', { root: __dirname });
-});
 
 app.listen(port);
 

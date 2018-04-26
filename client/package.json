@@ -3,7 +3,14 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "proxy": {
+    "/api": {
+      "target": "http://localhost:8080/",
+      "changeOrigin": true
+    }
+  },
   "dependencies": {
+    "axios": "^0.18.0",
     "webpack": "^4.5.0",
     "webpack-dev-server": "^3.1.1",
     "webpack-merge": "^4.1.2"

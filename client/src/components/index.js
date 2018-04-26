@@ -1,6 +1,3 @@
-import About from './About';
-import Contact from './Contact';
-import Form from './Form';
 import Game from './Game';
 import GamesListManager from './GamesListManager';
 import Home from './Home';
@@ -9,11 +6,9 @@ import Modal from './Modal';
 import Welcome from './Welcome';
 import DisplayGame from './DisplayGame';
 import NotFound from './NotFound';
+import Login from './Login';
 // We export all the components at once
 export {
-  About,
-  Contact,
-  Form,
   Game,
   GamesListManager,
   Home,
@@ -21,5 +16,6 @@ export {
   Modal,
   Welcome,
   DisplayGame,
-  NotFound
+  NotFound,
+  Login
 };
