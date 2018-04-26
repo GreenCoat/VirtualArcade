@@ -1,4 +1,4 @@
-const sessionExp = require('express-session');
+const session = require('express-session');
 const cookieparser = require('cookie-parser');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
@@ -10,7 +10,7 @@ module.exports = (app) => {
   // sessions are optional, but an easy solution to keeping users
   // logged in until they log out.
   app.use(cookieparser('keyboard cat'));
-  app.use(sessionExp({
+  app.use(session({
     // this should be changed to something cryptographically secure for production
     secret: 'keyboard cat',
     resave: false,
@@ -19,13 +19,11 @@ module.exports = (app) => {
     // the user's activity to extend their session. If you want an absolute session
     // expiration, set to false
     rolling: true,
-    name: 'foobar', // don't use the default session cookie name
+    name: 'virtualArcade', // don't use the default session cookie name
     // set your options for the session cookie
     cookie: {
       httpOnly: true,
       secure: false,
-      // the duration in milliseconds that the cookie is valid
-      maxAge: 20 * 60 * 1000 // 20 minutes
     }
   }));
 
