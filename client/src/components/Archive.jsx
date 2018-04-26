@@ -11,7 +11,10 @@ class Layout extends PureComponent {
       evt.preventDefault();
 
       axios.delete('http://localhost:8080/api/auth')
-      .then(() => {updateUser(null);});
+      .then(() => {
+        window.location.href="/login";
+        updateUser(null);
+      });
     }
 
     this.userProfile = (evt) => {
@@ -44,10 +47,9 @@ class Layout extends PureComponent {
             </div>
           </div>
           {user && 
-          <div>
-          {user.username}
-          <button onClick={this.logout}>Logout</button>
-          <Link to="/profile">Profile</Link>
+          <div style={{fontFamily: "'Press Start 2P', monospace", fontSize: "24px", color: "lime"}}>
+          Welcome: {user.username}
+          <button style={{fontFamily: "'Press Start 2P', monospace", fontSize: "24px", color: "lime"}} onClick={this.logout}>Logout</button>
           </div>
           }
         </nav>

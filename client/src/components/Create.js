@@ -44,7 +44,7 @@ class Create extends React.Component {
       		password
     		})
       		.then(user => {
-        		
+        		window.location.href="/login";
       		})
       		.catch(err => {
       			console.log(err);

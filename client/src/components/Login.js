@@ -26,6 +26,7 @@ class Login extends React.Component {
 			})
 			.then(user => {
 				updateUser(user.data);
+				window.location.href="/games";
 			})
 			.catch(err => {
 				console.log(err);
