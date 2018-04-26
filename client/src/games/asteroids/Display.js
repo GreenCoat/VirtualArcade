@@ -23,6 +23,8 @@ class Display extends React.Component {
 		let py = this.props.py;
 		let pa = this.props.pa;
 		let shots = this.props.shots;
+		let aster = this.props.aster;
+		let gameOn = this.props.gameOn;
 		let sl = this.state.shipL;
 		let ss = this.state.shotSz;
 
@@ -33,7 +35,17 @@ class Display extends React.Component {
 		//Draws black canvas
 		ctx.fillStyle='black';
 		ctx.fillRect(0, 0, canv.width, canv.height);
+		//Draws border	
+		ctx.strokeStyle='lime';
+		ctx.strokeRect(0, 0, canv.width, canv.height);
 
+		if(!gameOn){
+			ctx.font='24px monospace';
+			ctx.fillStyle='white';
+			ctx.fillText('Press any key to start', 45, canv.height/2);
+		}
+
+		if(gameOn){
 		//Draw player
 		ctx.strokeStyle='white';
 		ctx.beginPath();
@@ -47,8 +59,17 @@ class Display extends React.Component {
 		for(var i = 0; i < shots.length; i++){
 			ctx.fillStyle='white';
 			ctx.beginPath();
-			ctx.arc(shots[i].sx, shots[i].sy, ss,0,2*Math.PI);
+			ctx.arc(shots[i].sx, shots[i].sy, ss, 0, 2*Math.PI);
 			ctx.fill();
+		}
+
+		//Draw Asteroids
+		for(var i = 0; i < aster.length; i++){
+			ctx.strokeStyle='white';
+			ctx.beginPath();
+			ctx.arc(aster[i].ax, aster[i].ay, aster[i].size, 0, 2*Math.PI);
+			ctx.stroke();
+		}
 		}
 	}
 

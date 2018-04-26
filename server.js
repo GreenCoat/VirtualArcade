@@ -78,6 +78,13 @@ let data = [{
         year: 1972,
         description: "Pong is one of the earliest arcade video games. It is a table tennis sports game featuring simple two-dimensional graphics.",
         picture: "https://cdn.filestackcontent.com/CB1Ay5MYSGmvu1nRLAms", 
+},
+{
+        name: "Asteroids",
+        game: "asteroids",
+        year: 1979,
+        description: "The player controls a spaceship in an asteroid field which is periodically traversed by flying saucers. The object of the game is to shoot and destroy asteroids and saucers while not colliding with either or being hit by the saucers' counter-fire. The game becomes harder as the number of asteroids increases.",
+        picture: "https://i.imgur.com/HrcQ5wS.png", 
 }];
 
 for (let i=0; i< data.length; i++){
