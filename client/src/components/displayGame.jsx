@@ -16,7 +16,7 @@ export default class DisplayGame extends PureComponent {
     return (
         <div>
       	<Game />
-        <Link className="va-btn" style={{fontFamily: "'Press Start 2P', monospace", fontSize: "24px", color: "lime", margin: "10px"}} to="/games">Return</Link>
+        <Link className="va-btn" style={{fontFamily: "'Press Start 2P', monospace", fontSize: "24px", color: "lime"}} to="/games">Return</Link>
         </div>
     );
   }
