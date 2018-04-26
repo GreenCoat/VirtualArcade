@@ -70,7 +70,7 @@ class Create extends React.Component {
 					<input type="text" id="password" value={this.state.password} onChange={this.handleChange}/>
 					<button type='submit'>Create</button>
 				</form>			
-            </div>
+        </div>
   		)
 
   	}

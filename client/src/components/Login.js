@@ -24,12 +24,12 @@ class Login extends React.Component {
 			})
 			.then(user => {
 				updateUser(user.data);
-				//history.push('/');
+				history.push('/games');
 			})
 			.catch(err => {
 				console.log(err);
 				this.setState({
-					error: err.response.status === 401 ? 'Invalid username or password' : err.message
+					error: err.response.status === 401 ? 'Invalid username or password' : err.response.status === 400 ? 'Username and password cannot be blank' :err.message
 				});
 			});
 		}
@@ -47,16 +47,17 @@ class Login extends React.Component {
 		const { error } = this.state;
 
 		return (
-			<div>
+			<div className="container" style={{fontFamily: "'Press Start 2P', monospace", background: "black", padding: "20px"}}>
+				Enter Authorization
 				{error &&
 					<div>
 						{error}
 					</div>
 				}
 				<form onSubmit={this.handleSubmit}>
-						<input type="text" id="username" value={this.state.username} onChange={this.handleChange}/>
-						<input type="text" id="password" value={this.state.password} onChange={this.handleChange}/>
-						<button type='submit'>Login</button>
+						Username: <input type="text" style={{fontFamily: "'Press Start 2P', monospace"}} id="username" value={this.state.username} onChange={this.handleChange}/><br/>
+						Password: <input type="text" style={{fontFamily: "'Press Start 2P', monospace"}} id="password" value={this.state.password} onChange={this.handleChange}/><br/>
+						<button type='submit' style={{fontFamily: "'Press Start 2P', monospace"}}>Authenticate</button>
 				</form>
 			</div>
 		);

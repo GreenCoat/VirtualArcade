@@ -38,22 +38,6 @@ export default class GamesContainer extends Component {
     $('#game-modal').modal();
   }
 
-  deleteGame (id) {
-      console.log("foo")
-    fetch(`http://localhost:8080/games/${id}`, {
-      headers: new Headers({
-        'Content-Type': 'application/json',
-      }),
-      method: 'DELETE',
-    })
-    .then(response => response.json())
-    .then(response => {
-      // The game is also removed from the state thanks to the filter function
-      this.setState({ games: this.state.games.filter(game => game._id !== id) }); 
-      console.log(response.message);
-    });
-  }
-
   setSearchBar (event) { 
     // Super still filters super mario thanks to toLowerCase
     this.setState({ searchBar: event.target.value.toLowerCase() });
