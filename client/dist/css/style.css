@@ -367,3 +367,7 @@ font-family: PressStartFont;
   color:yellow;
   text-decoration:underline;
 }
+
+.va-btn:hover {
+  text-decoration:underline;
+}

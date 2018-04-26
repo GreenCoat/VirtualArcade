@@ -9,7 +9,7 @@ class Create extends React.Component {
 		this.state = {
 			username: null,
 			password: null,
-			message: 'Request Authorization:'
+			message: 'Request Credentials:'
 		}
 	
 
@@ -66,9 +66,9 @@ class Create extends React.Component {
         <form style={{border: "2px solid lime", margin: "10px", padding: "10px"}} onSubmit={this.createLogin}>
             Username: <input type="text" style={{fontFamily: "'Press Start 2P', monospace", padding: "5px", border: "1px solid lime"}} id="username" value={this.state.username} onChange={this.handleChange}/><br/>
             Password: <input type="text" style={{fontFamily: "'Press Start 2P', monospace", padding: "5px", border: "1px solid lime"}} id="password" value={this.state.password} onChange={this.handleChange}/><br/>
-            <button type='submit' style={{fontFamily: "'Press Start 2P', monospace", fontSize: "24px"}}>Request Authorization</button><br/>
+            <button className="va-btn" type='submit' style={{fontFamily: "'Press Start 2P', monospace", fontSize: "24px"}}>Request Authorization</button><br/>
             <div style={{margin: "10px"}}>OR</div>
-            <Link style={{fontFamily: "'Press Start 2P', monospace", fontSize: "24px", color: "lime"}}  to="/login">Return to Authorization</Link>
+            <Link style={{fontFamily: "'Press Start 2P', monospace", fontSize: "24px", color: "lime"}}  to="/login">Return to Authentication</Link>
         </form>
       </div>
   		)

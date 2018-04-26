@@ -10,7 +10,7 @@ class Login extends React.Component {
 		this.state = {
 			username: null,
 			password: null,
-			message: 'Enter Authorization:'
+			message: 'Enter Authorization Credentials:'
 		}
 
 		this.handleSubmit = (evt) => {
@@ -56,7 +56,7 @@ class Login extends React.Component {
 				<form style={{border: "2px solid lime", margin: "10px", padding: "10px"}} onSubmit={this.handleSubmit}>
 						Username: <input type="text" style={{fontFamily: "'Press Start 2P', monospace", padding: "5px", border: "1px solid lime"}} id="username" value={this.state.username} onChange={this.handleChange}/><br/>
 						Password: <input type="text" style={{fontFamily: "'Press Start 2P', monospace", padding: "5px", border: "1px solid lime"}} id="password" value={this.state.password} onChange={this.handleChange}/><br/>
-						<button type='submit' style={{fontFamily: "'Press Start 2P', monospace", fontSize: "24px"}}>Authenticate</button><br/>
+						<button className="va-btn" type='submit' style={{fontFamily: "'Press Start 2P', monospace", fontSize: "24px"}}>Authenticate</button><br/>
 						<div style={{margin: "10px"}}>OR</div>
 						<Link style={{fontFamily: "'Press Start 2P', monospace", fontSize: "24px", color: "lime"}}  to="/create">Request Authorization</Link>
 				</form>
