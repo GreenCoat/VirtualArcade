@@ -1,11 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Link } from 'react-router';
 //Add game to this list to use
-<<<<<<< HEAD
-import { Hangman, TTT, Snake, Asteroids } from '../games'
-=======
-import { Hangman, TTT, Snake, Pong } from '../games'
->>>>>>> master
+import { Hangman, TTT, Snake, Asteroids, Pong } from '../games'
 
 export default class DisplayGame extends PureComponent {
   render () {
