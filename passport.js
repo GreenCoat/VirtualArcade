@@ -33,7 +33,6 @@ module.exports = (app) => {
   // It's recommended you only serialize something like a unique username or user ID.
   // I prefer user ID.
   passport.serializeUser((user, done) => {
-    console.log('serializing user: ' + user._id);
     done(null, user._id);
   });
 
@@ -43,7 +42,6 @@ module.exports = (app) => {
   // Here, we simply find the user with the matching ID and return that.
   // This will cause the User record to be available on each authenticated request via the req.user property.
   passport.deserializeUser((userId, done) => {
-    console.log('Deserialize: ' + userId);
     db.User.findById(userId)
       .then(function (user) {
         done(null, user);

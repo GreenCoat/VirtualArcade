@@ -47,7 +47,7 @@ class Layout extends PureComponent {
             </div>
           </div>
           {user && 
-          <div style={{fontFamily: "'Press Start 2P', monospace", fontSize: "24px", color: "lime"}}>
+          <div style={{fontFamily: "'Press Start 2P', monospace", fontSize: "24px", color: "lime", textShadow: "0px 0px 10px lime"}}>
           Welcome: {user.username}
           <button className="va-btn" style={{fontFamily: "'Press Start 2P', monospace", fontSize: "24px", color: "lime"}} onClick={this.logout}>(Logout)</button>
           </div>
